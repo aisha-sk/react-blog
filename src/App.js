@@ -12,7 +12,14 @@ import {useState, useEffect} from 'react'
 function App() {
   return (
     <div className="App">
-
+      <Header />
+      <Nav />
+      <Home />
+      <NewPost />
+      <PostPage />
+      <About />
+      <Missing />
+      <Footer />
     </div>
   );
 }
