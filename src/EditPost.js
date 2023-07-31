@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 const EditPost = ({
     posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle
 }) => {
+    console.log('IT COMES TO EDITPOST')
     const { id } = useParams();
     const post = posts.find(post => (post.id).toString() === id);
 
