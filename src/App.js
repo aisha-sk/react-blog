@@ -6,6 +6,7 @@ import NewPost from './NewPost';
 import PostPage from './PostPage';
 import About from './About';
 import Missing from './Missing';
+import EditPost from './EditPost'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
@@ -105,7 +106,7 @@ function App() {
       <Route path="/" element={<Layout
         search={search}
         setSearch={setSearch}
-      />}>
+      />} />
         <Route index element={<Home posts={searchResults} />} />
         <Route path="post">
           <Route index element={<NewPost
@@ -115,6 +116,16 @@ function App() {
             postBody={postBody}
             setPostBody={setPostBody}
           />} />
+         
+          <Route path="/edit/:id">
+          <EditPost
+            posts={posts}
+            handleEdit={handleEdit}
+            editTitle={editTitle}
+            setEditTitle={setEditTitle}
+            editBody={editBody}
+            setEditBody={setEditBody}
+          />
           <Route path=":id" element={<PostPage
             posts={posts}
             handleDelete={handleDelete}
