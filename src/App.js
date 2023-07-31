@@ -1,16 +1,17 @@
-// //npm install date-fns --save
-import React from 'react'
+import React from 'react';
 import Layout from './Layout';
 import Home from './Home';
 import NewPost from './NewPost';
 import PostPage from './PostPage';
 import About from './About';
 import Missing from './Missing';
-import EditPost from './EditPost'
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import EditPost from './EditPost';
+import api from './api/posts';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import api from './api/posts';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+
+// //npm install date-fns --save
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -103,10 +104,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Layout
-        search={search}
-        setSearch={setSearch}
-      />} />
+      <Route path="/" element={<Layout search={search} setSearch={setSearch} />}>
         <Route index element={<Home posts={searchResults} />} />
         <Route path="post">
           <Route index element={<NewPost
@@ -117,15 +115,14 @@ function App() {
             setPostBody={setPostBody}
           />} />
          
-          <Route path="/edit/:id">
-          <EditPost
-            posts={posts}
-            handleEdit={handleEdit}
-            editTitle={editTitle}
-            setEditTitle={setEditTitle}
-            editBody={editBody}
-            setEditBody={setEditBody}
-          />
+          <Route path="edit/:id" element={<EditPost
+              posts={posts}
+              handleEdit={handleEdit}
+              editTitle={editTitle}
+              setEditTitle={setEditTitle}
+              editBody={editBody}
+              setEditBody={setEditBody}
+            />} />
           <Route path=":id" element={<PostPage
             posts={posts}
             handleDelete={handleDelete}
@@ -133,7 +130,7 @@ function App() {
         </Route>
         <Route path="about" element={<About />} />
         <Route path="*" element={<Missing />} />
-      </Route>
+        </Route>
     </Routes>
   );
 }
