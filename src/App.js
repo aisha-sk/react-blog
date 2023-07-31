@@ -115,14 +115,14 @@ function App() {
             setPostBody={setPostBody}
           />} />
          
-          <Route path="edit/:id" element={<EditPost
-              posts={posts}
-              handleEdit={handleEdit}
-              editTitle={editTitle}
-              setEditTitle={setEditTitle}
-              editBody={editBody}
-              setEditBody={setEditBody}
-            />} />
+         <Route path="edit/:id" element={<EditPost
+          posts={posts}
+          handleEdit={handleEdit}
+          editTitle={editTitle}
+          setEditTitle={setEditTitle}
+          editBody={editBody}
+          setEditBody={setEditBody}
+        />} />
           <Route path=":id" element={<PostPage
             posts={posts}
             handleDelete={handleDelete}
