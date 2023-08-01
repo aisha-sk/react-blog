@@ -10,7 +10,7 @@ import api from './api/posts';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-
+import useAxiosFetch from './hooks/useAxiosFetch';
 
 // //npm install date-fns --save
 
@@ -23,8 +23,14 @@ function App() {
   const [editTitle, setEditTitle] = useState('');
   const [editBody, setEditBody] = useState('');
   const navigate = useNavigate();
-  
+
+  const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
+
   useEffect(() => {
+    setPosts(data);
+  }, [data])
+  
+/*  useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await api.get('/posts')
@@ -47,7 +53,9 @@ function App() {
     }
 
     fetchPosts()
-  },[])
+  },[])*/
+
+  // it is redundant, not needed anymore
 
   useEffect(() => {
     const filteredResults = posts.filter((post) =>
@@ -106,7 +114,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout search={search} setSearch={setSearch} />}>
-        <Route index element={<Home posts={searchResults} />} />
+        <Route index element={<Home 
+        posts={searchResults}
+        fetchError={fetchError}
+        isLoading={isLoading} />} />
         <Route path="post">
           <Route index element={<NewPost
             handleSubmit={handleSubmit}
