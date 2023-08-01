@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 const EditPost = ({
     posts, handleEdit, editTitle, setEditTitle, editBody, setEditBody
 }) => {
-    console.log('IT COMES TO EDITPOST')
+    
     const { id } = useParams();
     const post = posts.find(post => (post.id).toString() === id);
 
@@ -44,7 +44,7 @@ const EditPost = ({
             {!editTitle &&
                 <>
                     <h2>Post Not Found</h2>
-                    <p>Well, that's disappointing EDIT POST.</p>
+                    <p>Well, that's disappointing.</p>
                     <p>
                         <Link to='/'>Visit Our Homepage</Link>
                     </p>
