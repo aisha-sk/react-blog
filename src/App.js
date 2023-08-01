@@ -114,8 +114,13 @@ function App() {
             postBody={postBody}
             setPostBody={setPostBody}
           />} />
-         
-          <Route path="edit/:id" element={<EditPost
+
+          <Route path=":id" element={<PostPage
+            posts={posts}
+            handleDelete={handleDelete}
+          />} />         
+          <Route path=":id/edit/:editId" element={<EditPost
+              // doesn't work with "edit/:id"
               posts={posts}
               handleEdit={handleEdit}
               editTitle={editTitle}
@@ -123,10 +128,6 @@ function App() {
               editBody={editBody}
               setEditBody={setEditBody}
             />} />
-          <Route path=":id" element={<PostPage
-            posts={posts}
-            handleDelete={handleDelete}
-          />} />
         </Route>
         <Route path="about" element={<About />} />
         <Route path="*" element={<Missing />} />

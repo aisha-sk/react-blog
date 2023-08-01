@@ -9,6 +9,8 @@ const PostPage = ({ posts, handleDelete }) => {
     const postId = parseInt(id);
   
     const post = posts.find((post) => post.id === postId);
+    console.log('comes to post page')
+    console.log(post)
     console.log(`/edit/${post.id}`)
     return (
         <main className="PostPage">
@@ -19,7 +21,7 @@ const PostPage = ({ posts, handleDelete }) => {
                         <p className="postDate">{post.datetime}</p>
                         <p className="postBody">{post.body}</p>
                         
-                        <Link to={`/edit/${post.id}`}><button className="editButton">Edit Post</button></Link>
+                        <Link to={`/post/${post.id}/edit/${post.id}`}><button className="editButton">Edit Post</button></Link>
                         <button className="deleteButton" onClick={() => handleDelete(post.id)}>
                             Delete Post
                         </button>
@@ -28,7 +30,7 @@ const PostPage = ({ posts, handleDelete }) => {
                 {!post &&
                     <>
                         <h2>Post Not Found</h2>
-                        <p>Well, that's disappointing.</p>
+                        <p>Well, that's disappointing postPAGE.</p>
                         <p>
                             <Link to='/'>Visit Our Homepage</Link>
                         </p>

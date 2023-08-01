@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
 const EditPost = ({
-    posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle
+    posts, handleEdit, editTitle, setEditTitle, editBody, setEditBody
 }) => {
     console.log('IT COMES TO EDITPOST')
     const { id } = useParams();
@@ -44,7 +44,7 @@ const EditPost = ({
             {!editTitle &&
                 <>
                     <h2>Post Not Found</h2>
-                    <p>Well, that's disappointing.</p>
+                    <p>Well, that's disappointing EDIT POST.</p>
                     <p>
                         <Link to='/'>Visit Our Homepage</Link>
                     </p>
